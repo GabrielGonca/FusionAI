@@ -1,14 +1,25 @@
 ﻿#  Fusion AI
-
-
-
-
 - [What Is Fusion AI](#what-is-fusion-ai)
-
-
+- [Theory of Game AI](#theory-of-game-ai)
+	 - [State Machine](#state-machines)
+	 - [Decision Tree](#decision-trees)
+	 - [Behaviour Tree](#behaviour-trees)
+	- [Navigation Mesh](#unity-navigation-mesh)
+	- [Raycast Movement](#raycast-movement)
+- [Implementation on Fusion AI](#implementation-on-fusion-ai)
+	 - [State Machine](#state-machine)
+	 - [Decision Tree](#decision-tree)
+	 - [Behaviour Tree](#behaviour-tree)
+	- [Navigation Mesh](#navigation-mesh-implementation)
+	- [Raycast Movement](#raycast-movement-implementation)
+	- [Free Roam](#free-roam)
+	- [Move to Target](#move-to-target)
+	- [Rounds](#rounds)
+	- [Follow Character](#follow-character)
+	
 ## What is Fusion AI?
 
-Fusion AI is a plugin designed for Unity that allows the creation of artificial intelligence characters  by providing a basis of systems used in games for decades. Fusion AI helps to create and visualize the behavior of AI characters potentializing the development and allowing that programmers jump straight into practice.
+Fusion AI is a plugin designed for Unity that allows the creation of artificial intelligence characters  by providing a basis of systems used in games for decades. Fusion AI helps you to code and visualize the behavior of AI characters potentializing the development and allowing that programmers jump straight into practice.
 
 Apart from demonstrating the **practical** use of Fusion AI, this documentation teaches basic **theoretical** information about several techniques used in game AI to help developers achieve the best result possible.
 
@@ -33,7 +44,7 @@ The different modules that exist in Fusion AI are: **decision**,  **movement** a
 
 
 ### Decision Making Modules
-#### State Machine
+#### State Machines
 ##### Description
 A state machine consists of different pre-programmed states (actions and behaviors)  and transitions between them. The character starts in an initial state and executes the behavior described in that state until the conditions to a transition are true and the state is altered.
 ##### Best Use Cases
@@ -48,7 +59,7 @@ A soldier character is in a round state, moving from point A to B. He stays in t
 
 
 
-#### Decision Tree
+#### Decision Trees
 ##### Description
 A decision tree iterates through several questions to arrive on a result behavior that better matches the current needs of a character. There are no explicit transitions and all behaviors are independent.
 
@@ -60,7 +71,7 @@ A minion on a MOBA game that attacks enemy minions by default, but needs to chan
 
 
 
-#### Behavior Tree
+#### Behaviour Trees
 ##### Description
 A behavior tree is composed of tasks laid out on hierarchical execution order. A character has a initial task and must complete it before moving on to the next task, following the direction indicated by tree nodes. There are three different node types on a behavior tree.
 
@@ -246,4 +257,88 @@ By default, selectors and sequencers will execute its children in order (indicat
 
 This means that you can combine sequencers, selectors and tasks to create a complex and ever-flowing behaviour to your tree. Selectors should be seen as a "try any possible solution" node, while Sequencers are "try to execute all these setps to a combined actions" node. 
 
+### Movement Modules
+#### Navigation Mesh Implementation
+This is the Fusion AI implementation of the native Unity's [NavMesh System](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html).
+
+#### Raycast Movement Implementation
+
+Raycast Movement is a ray oriented movement system that finds a real time path to the current objective. Several rays are shot around the character (by a fixed angle called checkAngle), a straight line ray is also always shot directly to the movement goal. The script tries to use the ray point results to find the closest point to the destination.
+It's possible to use the dislocation memory value, making so that the character will avoid continuing searches on an area that it has already looked in.
+
+This movement is best used on a dynamical environment, And should not be used to solve maze-like terrains. An overall open environment with multiple objects scattered around is the best scenario to use this module.
+
+|Type|Name|Description|
+|--|--|--|
+|float| Speed| Character speed|
+|float| Check Angle| Angle between raycast around character|
+|float| Recalculation Time| Fixed time to force recalculation|
+|float| Target Min Distance| Distance to consider target reached|
+|float| Vision Min Distance| Ignores hits that are too close to the AI|
+|bool| Move With Rotation|Makes character moves forward relative to current rotation|
+|float| Rotation Speed| Character rotation speed|
+|LayerMask| Layer Mask| Layers that rays can hit on calculation|
+|float| Ray Origin Height Correction|Corrects ray origin position on Y axis relative to game object origin
+|bool| Debug Rays|Draw rays on scene view|
+|float| Search Location Distance|Influences the distance the character will ignore locations it already searched|
+
+### Objective Modules
+#### Free Roam 
+Free Roam characters will move to a random position in an area, relative to a center Transform and a radius. The movement calculates a new destination when the character is near is current destination, or when a fixed period of time has passed.
+|Type|Name|Description|
+|--|--|--|
+|Transform|Area Center|Center of the movement area
+|float| Area Distance| Radius to area center that defines movement area|
+|float| Auto Recalculation Delay| Fixed time to force recalculation|
+|float| Max Move Distance| Maximum distance on recalculations from current location|
+|float| Min Move Distance| Minimum distance on recalculations from current location|
+|float| Chance Stop On Recalculation| Chance to skip recalculation, stopping the character until next recalculation|
+|float| Target Reached Distance| Distance between character and target to consider destination reached|
+
+#### Move To Target
+The character moves to the location of a main target, and can have a list of secondary targets. If it is near a secondary target, it will focus it. There is a distance to stay away from targets to avoid collision conflicts and an [Unity Event](https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html) of actions to be called when near a target.
+
+|Type|Name|Description|
+|--|--|--|
+|enum TargetType| Target Type| Type of target identification. Tag and Mono Behaviour find all game objects that match|
+|Transform| Target Transform| Individual target transform to use with this type of target identification|
+|MonoBehaviour| Target Mono Behaviour| Mono Behaviour script type to use with this type of target identification|
+|string| Target Tag| Game Object tag to use with this type of target identification|
+|float| Target Distance| Distance to consider near target|
+|float| Keep Distance From Target| Distance to keep from target|
+|Unity Event| On Near Target| Event to invoke when near target|
+
+#### Rounds
+The character moves between pre-defined waypoints. This creates a route and the character can stop or perform an [Unity Event](https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html)   action when arriving at different waypoints.
+
+##### Properties of a Waypoint
+|Type|Name|Description|
+|--|--|--|
+|Transform| Waypoint| Transform of Waypoint|
+|float| Wait Time| Fixed wait time of stay on waypoint|
+|Unity Event| Action On Arrive| Unity Event action invoked when the character arrives at the waypoint|
+|Unity Event| Action On Leave| Unity Event action invoked when the character leaves the waypoint|
+
+##### Properties of the Script
+|Type|Name|Description|
+|--|--|--|
+|float| Min Waypoint Distance| Distance to consider arrival at waypoint. Should be a small positive number|
+|Waypoints[]| Waypoints| List of waypoints to be reached in a loop|
+|int| Current Waypoint| Current target waypoint. Can be modified|
+
+#### Follow Character
+The character moves close to a target, ideally another AI character or player. It will always try to stay close to the target character, and can teleport to it if it gets too far.
+
+ |Type|Name|Description|
+|--|--|--|
+|Transform| Target Character|Main target to always follow|
+|float | Min Move Distance | Minimum distance from target to start movement|
+|bool | Use Teleport| Teleports character when reaches a maximum distance from target|
+|float | Max Move Distance| Linear distance from target where the agent is teleported|
+|float| Teleport Delay| When reached Max Move Distance, delays the teleportation|
+|Unity Event| On Teleport| Actions to be performed when teleporting to target|
+|bool| Use Random Actions| Use random actions while character is stopped or moving|
+|RandomAction[]| Random Actions On Move| Random actions to be performed while moving|
+|RandomAction[]| Random Actions On Stopped| Random actions to be performed when near target|
+|Unity Event| On Target Null Action| Actions to be performed when there is no target assigned
 
