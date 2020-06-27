@@ -1,6 +1,4 @@
-﻿#Fusion AI
-
-
+﻿# Fusion AI
 
 - [What Is Fusion AI](#what-is-fusion-ai)
 - [Theory of Game AI](#theory-of-game-ai)
