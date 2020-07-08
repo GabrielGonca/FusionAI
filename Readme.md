@@ -111,7 +111,7 @@ Movement and Objective modules do not use a separate editor and can be tweaked d
 ### Decision Making Modules
 #### State Machine
 State machines are composed of states and transitions.
-![](https://lh3.googleusercontent.com/r2IKsgpZ6O7kgTzVVctCu4VHRp7RX2X7DsoSKo4wNQXPEZ89SSKC8X9iUanvq5emdGJ5rYhOjP5KNalwptCam7jpzF-AT3UvGcpUQaqfcV3YvlzoJl-L8W2-mY91iPCRMmQWU5bUuEOZ8bwK2FfAIMxrUt12d5sYSL8DHy8DTROvqBBp9HxqRcoYJK_kAAvLnlOQLhgou8ovBf1y56NR0QIAyOtRQ8yoBpXPDdwcD7wvuQHO1eBNSMn-y-BwgTu93WnLw_NUoqQH2mlN-_Aa4yqq_kWcBEa8Poqu_Enpy5TT4g3mkPK0FD5P7kiO62dRqukL9vAMK56nc3PZf7vJiKo5PvYAmbC8V-5ZukNXUkWUJv17_eQOJKnqeFIsQYYnJ8pEpYXbkxJDr66OCHbVx8QYj42VpL-Fx7jKVGByFYGreNEveVcOO7OerphWy1pjAnSzDRL4mmm4PEioSjqWPVTyOpA7jvuPPbaRb3TikNGe798_Xix8Iv3eW8RFOqj9BrExc_2s6V75a-cK0bm1QeQHOcGX_z_jIAM4kO3nLY4dVhx_KHcb3rn0V3VJ21Sa8cNEKkWAGFswlHZTvv5D7ancWz5C8Yodaio0xlZQvEU6Ag2FFWbxk7yaFMx2vcnslK02rc6kSeo1t3WIFssOWI2x2rU428jhaf9KWEUmIK3SPhVYAL-M1Q4WZvv1hrU=w833-h571-no?authuser=0 = 250px)
+![](https://i.imgur.com/tgZC1f0.jpg)
 ##### Right Click Editor Interactions 
 | Element | Options  |
 |--|--| 
@@ -158,7 +158,7 @@ Transitions use a bool function with no parameters as a [Delegate]([https://docs
     }
 #### Decision Tree
 Decision Trees are composed of decisions and actions. The tree root is always executed from the beginning at every frame.
-![](https://lh3.googleusercontent.com/OguvnOOHd75iGJnsHEPlFEO50E7ktohKHhsLKPU5JXEa98r89zYEvnS5wEYV8R11L3CB6Tq63cpnpQc2wJox_fQdhA6_W8n4QE_bCcXyRnHs7Xne3TPeNp0vTWNlHIvLtv1gX9BLc2pucT5-s9YJjwhZe7vt79p4rM4zLLr-CZu8F4TZKTQ0V-mcMf0fQq508k8xX7se6mxNh-aeyDCIIuKKsK1Rxoq3WV5812ef1TMLKWEL2IzdKBTemvlj6718ORUESuFMU3dg1c7FMhZahWevw-NDHVCiNUXiBEMq652PbLFAbMdzP7VnKt8dfLP5A3X7UiTgAi0JvJephSnurdnQjV-lVKgTlumZi-zdXXKLvUIPcSp_OLuHEBZIi0wPvvYlllJiN5JdUNg7y0snRYMK5ixcGja2gdRyr7mD5SYhMQb8qbuWcrglmUqVsAgwQXP5GP32OiaphrkqU3A91RbrgFcGoQTjN6b6yo02KuZBAFrngNHS9tnMkaw_L_f8oEpdyTLCm_Es0QPnXOJ0a7WdY-CFLTOAOzmM65l4SBL63fhvLz16jYIMfzSy-BpQAEcZLlmiU0yEYx5b1wnFuI0_-9lB1SKHCuIwedFCuQa57ZvEIT5ZL-fvcIe5i2-wkJxtLf0K2jG8A4ZFoxwwjQBy_u1cv-AJCRyCNM3E1fpGG5TNWdOxOFIv8ReB_I0=w833-h571-no?authuser=0)
+![](https://i.imgur.com/ShvXmuI.jpg)
 ##### Right Click Editor Interactions 
 | Element | Options  |
 |--|--| 
@@ -200,7 +200,7 @@ An example of implementation of a simple decision function is:
    
 #### Behaviour Tree
 A behaviour tree is composed of tasks, selectors and sequencers. This type of decision module is very useful for complex and multiple steps dependent behaviours. The logic behind selectors and sequencers is very simple and can be combined in multiple ways for powerful results.
-![](https://lh3.googleusercontent.com/i3voJk9t8uIzyQksu8lFD8kx2N9L_Loy6oQD8Ca1C99PKvLldPM9Rlf9G4dPDxAKkPnEKArwt2ss-eesVovnl0w2rcSky-pmMXg-bcz5YyRfhkB8c0c1rprnwe2-VzB9SVnPFJYDaHeQFEMwdFOrPJSRWSVI9KWrJhECBK7XbVmA0EXgWXDqUxIxvSZID-rCUcAXb40KT8SQvZxt9xgAXhf3TGaBkcr90HlDYwZVMcCIGjCT-lHgKrSyFQKypmsAmQhoRxD8CeNomnhvX27fUx-VDWTz-KDFex0oNeD2fSPl4l2xUpXCmKvUo6gUy0QxR9N6i_FhjTIs2DO3yPxLBhTTEGKC6rHfu6B1rDlryLahOw1F4uK47YYqhRWI_AcxxvOKllsTDUfkFBER36wIBFgzc2jXmNC6qV4GNBeaHUQa-GxMJdGFcOzZarTIN_LEjwUYDr4HpQsYwlythNrhGKCsEE2SikW91cByNKXGKY-A3atstfuyihhp3JV_kgXCThEZInc4qr5HcJJU7MBJBqMPYhLic6RgrdGDkDwWm5UNpAHOdJl_uRmM3TsXVaST7j32cRiTdKZGZ323nbOznJjAAOIl-rR3auLu_OD20HDb4UaeR1H31-e2nmyv5AgPNlWmpM1ugCRQ49NfieKJNrfysLlnhKt4P3c_k2eoNZX2LnII-J6jKIr0GH3EjZw=w833-h571-no?authuser=0)
+![](https://i.imgur.com/gXsXN8u.jpg)
 ##### Right Click Editor Interactions 
 | Element | Options  |
 |--|--| 
