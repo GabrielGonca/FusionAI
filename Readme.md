@@ -30,9 +30,9 @@ Apart from demonstrating the **practical** use of Fusion AI, this documentation 
 
 ### AI Personality
 
-When the subject is to create an AI character we always think that the main goal is to be as realistic as possible, but is that really necessary or even desired to your character?
+When the matter is to create an AI character we always think that the main goal is to be as realistic as possible, but is that really necessary or even desired to your character?
 
- A lot of times the characters need behaviors that are easy to understand, to allow players to learn their behavior to create strategies, sometimes complex and realistic routines can make the character too unpredictable or hard to understand. 
+Many the characters need behaviors that are easy to understand, to allow players to learn their behavior to create strategies, sometimes complex and realistic routines can make the character too unpredictable or hard to understand. 
 
 That means that the programming and behavior of your AI character must come from your need in game design, always thinking on "what is the goal of having this character in my game" and how its programming must be to better reach that goal.
 
@@ -50,7 +50,7 @@ The different modules that exist in Fusion AI are: **decision**,  **movement** a
 #### State Machines
 ##### Description
 A state machine consists of different pre-programmed states (actions and behaviors)  and transitions between them. The character starts in an initial state and executes the behavior described in that state until the conditions to a transition are true and the state is altered.
-##### Best Use Cases
+##### Recommended Use Cases
 State machines are better used on characters with predictable and simple behaviors. The creation of complex state machines can result on realistic and dynamical characters, but all interactions between states have to be completely pre-determined by developers, that have full control of the agent behavior. 
 
 The main advantage of the state machine is the level of refinement that is possible to achieve, since transitions between two states are pre-planned.
@@ -66,7 +66,7 @@ A soldier character is in a round state, moving from point A to B. He stays in t
 ##### Description
 A decision tree iterates through several questions to arrive on a result behavior that better matches the current needs of a character. There are no explicit transitions and all behaviors are independent.
 
-##### Best Use Cases
+##### Recommended Use Cases
 It's the simplest and most direct way to execute a character's behavior. It is better used on quick decisions or for characters that instantly change behavior based on game's situations. Can be really useful on quick paced games and characters.
 
 ##### Example
@@ -83,7 +83,7 @@ Sequencers execute all its children until one of them fails.
 Selectors try to execute all its children to find one that succeeds.
 
 
-##### Best Use Cases
+##### Recommended Use Cases
 The goal of a behavior tree is to create complex and realistic behaviors to a character. The tasks are described on a hierarchy order of execution, meaning that the developer can simulate multiple steps of a larger action that must happen before the final task succeeds. By comparison to other methods, the behavior tree defines a more realistic character, but rarely better optimized.
 
 ##### Example
