@@ -232,7 +232,7 @@ An example of a Task function implementation is:
 	    
 	    //then execute the check for return value
 	    if(door.GetComponent<Door>().isOpen) return true;
-	    else returnf  false;
+	    else return  false;
     }
 
 Alternatively, the same logic can be coded in a more direct way:
